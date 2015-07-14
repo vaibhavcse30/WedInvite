@@ -18,13 +18,11 @@
 
 
 <script>
-  function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-         });
-          window.location="http://localhost:8080/Wedinvite/index.html";
-         
-  }
+	function signOut() {
+		sessionStorage.clear();
+		sessionStorage.setItem("login", "login");
+		window.location = "../index.html";
+	}
 </script>
 
 
@@ -32,25 +30,22 @@
 
 <body onload="myFunction()">
 	<p id="name"></p>
-	<img id="image" src=""/>
-	
+	<img id="image" src="" />
+
 	<a href="#" onclick="signOut();">Sign out</a>
-	
+
 </body>
 
 
 
 <script>
-
-
 	function myFunction() {
 		var name = sessionStorage.getItem("name");
 		var email = sessionStorage.getItem("Email");
 		var image = sessionStorage.getItem("image");
 		var tokeid = sessionStorage.getItem("id_token");
-			alert(image);
-		document.getElementById("name").innerHTML="Welcome "+name;
-		document.getElementById("image").src=image;
+		document.getElementById("name").innerHTML = "Welcome " + name;
+		document.getElementById("image").src = image;
 	};
 </script>
 </html>

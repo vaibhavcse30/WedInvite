@@ -341,12 +341,18 @@
 					function onSignIn(googleUser) {
 						var profile = googleUser.getBasicProfile();
 						var id_token = googleUser.getAuthResponse().id_token;
-						if(id_token !="" ){
-							sessionStorage.setItem("name", profile.getName());
-							sessionStorage.setItem("Email", profile.getEmail());
-							sessionStorage.setItem("image", profile.getImageUrl());
-							sessionStorage.setItem("id_token", id_token);
-							window.location="pages/login.html";
+						sessionStorage.setItem("name", profile.getName());
+						sessionStorage.setItem("Email", profile.getEmail());
+						sessionStorage.setItem("image", profile.getImageUrl());
+						sessionStorage.setItem("id_token", id_token);
+
+						if (sessionStorage.getItem("login") == 'login') {
+							var auth2 = gapi.auth2.getAuthInstance();
+						    auth2.signOut().then(function () {
+						    });
+						    sessionStorage.clear();
+						} else {
+							window.location = "pages/login.html";
 						}
 					};
 				</script>
