@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="UTF-8">
+
+
+
+
+<title>Login</title>
+
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id"
+	content="407232903069-hkk590d4h0h768e4ev7bktmdntmcevl3.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+
+
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+         });
+          window.location="http://localhost:8080/Wedinvite/index.html";
+         
+  }
+</script>
+
+
+</head>
+
+<body onload="myFunction()">
+	<p id="name"></p>
+	<img id="image" src=""/>
+	
+	<a href="#" onclick="signOut();">Sign out</a>
+	
+</body>
+
+
+
+<script>
+
+
+	function myFunction() {
+		var name = sessionStorage.getItem("name");
+		var email = sessionStorage.getItem("Email");
+		var image = sessionStorage.getItem("image");
+		var tokeid = sessionStorage.getItem("id_token");
+			alert(image);
+		document.getElementById("name").innerHTML="Welcome "+name;
+		document.getElementById("image").src=image;
+	};
+</script>
+</html>
